@@ -1,0 +1,36 @@
+<html>
+<title>扫码登录</title>
+<head></head>
+<body>
+    <script type="text/javascript">
+        var sock = null;
+        var wsuri = "ws://127.0.0.1:7777/websocket?token={{.Name}}";
+
+        window.onload = function() {
+            console.log("onload");
+            sock = new WebSocket(wsuri);
+            sock.onopen = function() {
+                console.log("connected to " + wsuri);
+            }
+            sock.onclose = function(e) {
+                console.log("connection closed (" + e.code + ")");
+            }
+            sock.onmessage = function(e) {
+                console.log("message received: " + e.data);
+                document.getElementById('message').innerHTML = e.data
+            }
+        };
+
+        function send() {
+            sock.send(msg);
+        };
+    </script>
+
+
+    <div style="text-align: center">
+        <h1>扫码登录</h1>
+        <img src="/qrcode?token={{.Name}}" alt="">
+        <h2 style="color: green" id="message"><h2>
+    </div>
+</body>
+</html>
