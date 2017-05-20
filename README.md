@@ -1,9 +1,9 @@
-扫码登录(golang websocket)
-========================
+扫码登录
+=======
 
 第一次写golang程序，用来学习的。 模拟PC浏览器二维码扫描登录的过程，手机APP端用 微信 模拟，简单起见，APP端只要发送token给服务端就算登录，服务端主动提示登录成功信息。
 
-依赖包
+依赖包 用到了 websocket 和 二维码
 * golang 1.5 version
 * golang.org/x/net/websocket
 * github.com/skip2/go-qrcode
@@ -19,3 +19,5 @@ clone项目到本地，安装依赖，然后 `go run qrlogin.go`。需要修改�
 3. 服务端验证token，通知PC端登录成功
 
 
+### 参考
+[微信第三方扫码登录抓包小记](http://blog.csdn.net/orangleliu/article/details/72457060)
